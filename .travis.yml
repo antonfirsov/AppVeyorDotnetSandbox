@@ -11,4 +11,4 @@ matrix:
 
 script:
   - dotnet restore
-  - .\Test.sh
+  - ./Test.sh
