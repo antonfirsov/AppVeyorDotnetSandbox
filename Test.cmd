@@ -1,4 +1,7 @@
 cd .\AppVeyorDotnetSandbox
+
+dotnet restore
+
 dotnet xunit -framework netcoreapp1.1
 dotnet xunit -framework netcoreapp2.0 --fx-version 2.0.0
 dotnet xunit -framework net462

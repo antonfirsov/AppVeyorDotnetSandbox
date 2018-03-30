@@ -16,13 +16,11 @@ matrix:
       sudo: required
       mono: none
     - env: DOTNET_TO_RUN=mono
+      dotnet: 2.0.3
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
       mono: latest
-
-install:
-  - dotnet restore
 
 script:
   - ./Test.sh
