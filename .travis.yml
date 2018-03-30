@@ -8,9 +8,14 @@ matrix:
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
-      mono: latest
+      mono: none
     - env: DOTNET_TO_RUN=1.1.7 # wtf travis?
       dotnet: 1.1.8
+      os: linux # Ubuntu 14.04
+      dist: trusty
+      sudo: required
+      mono: none
+    - env: DOTNET_TO_RUN=mono
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
