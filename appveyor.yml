@@ -1,8 +1,11 @@
 image: Visual Studio 2017
 
+install:
+  - cmd: choco install mono
+
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet restore --verbosity m
+  - cmd: dotnet restore --packages packages
 
 build_script:
   #- cmd: PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\AppVeyorDotnetSandbox\build.ps1'"
@@ -14,5 +17,6 @@ test_script:
   - cmd: dotnet xunit -framework netcoreapp2.0 --fx-version 2.0.0
   - cmd: dotnet xunit -framework net461
   - cmd: dotnet xunit -framework net461 -x86
+  - cmd: mono ..\packages\xunit.runner.console\2.3.1\tools\net452\xunit.console.exe .\bin\Release\net461\AppVeyorDotnetSandbox.dll
 
 deploy: off
