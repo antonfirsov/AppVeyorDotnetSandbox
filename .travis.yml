@@ -1,15 +1,18 @@
 language: csharp
 solution: AppVeyorDotnetSandbox.sln
 
-os: linux # Ubuntu 14.04
-dist: trusty
-sudo: required
-mono: latest
-
 matrix:
   include:
     - dotnet: 2.0.0
-    - dotnet: 1.1.8
+      os: linux # Ubuntu 14.04
+      dist: trusty
+      sudo: required
+      mono: latest
+    - dotnet: 1.1.7
+      os: linux # Ubuntu 14.04
+      dist: trusty
+      sudo: required
+      mono: latest
 
 install:
   - dotnet restore
