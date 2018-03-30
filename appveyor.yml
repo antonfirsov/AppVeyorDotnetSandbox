@@ -10,7 +10,9 @@ build_script:
 
 test_script:
   - cmd: cd AppVeyorDotnetSandbox
-  - cmd: dotnet xunit --fx-version 2.0.0
-  - cmd: dotnet xunit -x86 --fx-version 2.0.0
+  - cmd: dotnet xunit -framework netcoreapp1.1
+  - cmd: dotnet xunit -framework netcoreapp2.0 --fx-version 2.0.0
+  - cmd: dotnet xunit -framework net461
+  - cmd: dotnet xunit -framework net461 -x86
 
 deploy: off

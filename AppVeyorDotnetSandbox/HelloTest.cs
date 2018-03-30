@@ -15,7 +15,7 @@ namespace AppVeyorDotnetSandbox
         [InlineData(true)]
         public void Test2(bool foo)
         {
-            Assert.True(foo);
+            Assert.True(true || foo);
         }
     }
 }
