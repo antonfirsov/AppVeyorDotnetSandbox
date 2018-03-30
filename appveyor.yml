@@ -1,7 +1,4 @@
-image: Visual Studio 2017
-
-install:
-  - cmd: choco install mono
+image: Visual Studio 2015
 
 before_build:
   - cmd: dotnet --version
@@ -12,11 +9,6 @@ build_script:
   - cmd: dotnet build -c Release
 
 test_script:
-  - cmd: cd AppVeyorDotnetSandbox
-  - cmd: dotnet xunit -framework netcoreapp1.1
-  - cmd: dotnet xunit -framework netcoreapp2.0 --fx-version 2.0.0
-  - cmd: dotnet xunit -framework net461
-  - cmd: dotnet xunit -framework net461 -x86
-  - cmd: mono ..\packages\xunit.runner.console\2.3.1\tools\net452\xunit.console.exe .\bin\Release\net461\AppVeyorDotnetSandbox.dll
+  - cmd: .\AppVeyorDotnetSandbox\Test.cmd
 
 deploy: off
