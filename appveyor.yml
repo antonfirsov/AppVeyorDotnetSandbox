@@ -9,6 +9,6 @@ build_script:
   - cmd: dotnet build -c Release
 
 test_script:
-  - cmd: .\AppVeyorDotnetSandbox\Test.cmd
+  - cmd: .\Test.cmd
 
 deploy: off
