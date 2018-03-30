@@ -1,8 +1,8 @@
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet restore --packages packages
+  - cmd: dotnet restore
 
 build_script:
   #- cmd: PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\AppVeyorDotnetSandbox\build.ps1'"
