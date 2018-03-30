@@ -3,12 +3,14 @@ solution: AppVeyorDotnetSandbox.sln
 
 matrix:
   include:
-    - dotnet: 2.0.3
+    - env: DOTNET_TO_RUN=2.0.3
+      dotnet: 2.0.3
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
       mono: latest
-    - dotnet: 1.1.8
+    - env: DOTNET_TO_RUN=1.1.7 # wtf travis?
+      dotnet: 1.1.8
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required

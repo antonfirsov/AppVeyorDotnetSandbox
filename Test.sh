@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOTNETVER_FULL=$(dotnet --version| cut -c 1-5)
-DOTNETVER_SHORT=$(dotnet --version| cut -c 1-3)
+DOTNETVER_FULL=$(DOTNET_TO_RUN| cut -c 1-5)
+DOTNETVER_SHORT=$(DOTNET_TO_RUN| cut -c 1-3)
 
 echo "dotnet version full: " $DOTNETVER_FULL
 echo "dotnet version short: " $DOTNETVER_SHORT
