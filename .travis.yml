@@ -3,12 +3,12 @@ solution: AppVeyorDotnetSandbox.sln
 
 matrix:
   include:
-    - dotnet: 2.0.0
+    - dotnet: 2.0.3
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
       mono: latest
-    - dotnet: 1.1.7
+    - dotnet: 1.1.8
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
@@ -18,6 +18,4 @@ install:
   - dotnet restore
 
 script:
-#  - dotnet build -f netcoreapp1.1
-#  - dotnet build -f netcoreapp2.0
   - ./Test.sh
