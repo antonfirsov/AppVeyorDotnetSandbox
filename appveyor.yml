@@ -5,10 +5,12 @@ before_build:
   - cmd: dotnet restore --verbosity m
 
 build_script:
-  - cmd: PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\AppVeyorDotnetSandbox\build.ps1'"
+  #- cmd: PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\AppVeyorDotnetSandbox\build.ps1'"
+  - cmd: dotnet build -c Release
 
 test_script:
   - cmd: cd AppVeyorDotnetSandbox
-  - cmd: dotnet xunit --fx-version 2.0.0
+  - cmd: dotnet xunit
+  - cmd: dotnet xunit -x86
 
 deploy: off
