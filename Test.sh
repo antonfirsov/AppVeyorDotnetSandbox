@@ -7,5 +7,5 @@ echo "dotnet version full: " $DOTNETVER_FULL
 echo "dotnet version short: " $DOTNETVER_SHORT
 
 cd ./AppVeyorDotnetSandbox
-dotnet xunit -framework netcoreapp$DOTNETVER_SHORT
+dotnet xunit -framework netcoreapp$DOTNETVER_SHORT --fx-version $DOTNETVER_FULL
 #mono ~/.nuget/packages/xunit.runner.console/2.3.1/tools/net452/xunit.console.exe ./bin/Release/net461/AppVeyorDotnetSandbox.dll
