@@ -1,1 +1,7 @@
 image: Visual Studio 2017
+
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore
+
+deploy: off
