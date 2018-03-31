@@ -26,7 +26,14 @@ if ($targetFramework -ne "mono"){
 else {
     $testDllPath = "$PSScriptRoot\AppVeyorDotnetSandbox\bin\Release\net461\AppVeyorDotnetSandbox.dll"
     cd "$env:HOMEPATH\.nuget\packages\xunit.runner.console\2.3.1\tools\net452\"
-    $testRunnerCmd = "mono .\xunit.console.exe $testDllPath"
+    if ($is32Bit -eq "True") {
+        $monoPath = "$env:PROGRAMFILES\Mono\bin\mono.exe"
+    }
+    else {
+        $monoPath = "${env:ProgramFiles(x86)}\Mono\bin\mono.exe"
+    }
+    
+    $testRunnerCmd = "$monoPath .\xunit.console.exe $testDllPath"
 }
 
 Write-Host "running:"
