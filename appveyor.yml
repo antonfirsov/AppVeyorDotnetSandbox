@@ -7,8 +7,22 @@ before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore
 
+environment:
+  matrix:
+    - TARGET_FRAMEWORK: netcoreapp1.1
+      IS_32BIT: False
+    - TARGET_FRAMEWORK: netcoreapp1.1
+      IS_32BIT: True
+    - TARGET_FRAMEWORK: netcoreapp2.0
+      IS_32BIT: False
+    - TARGET_FRAMEWORK: netcoreapp2.0
+      IS_32BIT: True
+    - TARGET_FRAMEWORK: net462
+      IS_32BIT: False
+    - TARGET_FRAMEWORK: net462
+      IS_32BIT: True
+
 build_script:
-  #- cmd: PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\AppVeyorDotnetSandbox\build.ps1'"
   - cmd: dotnet build -c Release
 
 test_script:

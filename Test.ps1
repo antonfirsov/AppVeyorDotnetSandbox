@@ -1,9 +1,21 @@
 cd .\AppVeyorDotnetSandbox
 
-dotnet build
-dotnet xunit -nobuild -framework netcoreapp1.1
-dotnet xunit -nobuild -framework netcoreapp2.0 --fx-version 2.0.0
-dotnet xunit -nobuild -framework net462
-dotnet xunit -nobuild -framework net462 -x86
+$xunitArgs = "-c Release -framework $TARGET_FRAMEWORK"
+
+if ($TARGET_FRAMEWORK -eq "netcoreapp2.0") {
+    $xunitArgs += " --fx-version 2.0.0"
+}
+
+if ($IS_32BIT -eq "True") {
+    $xunitArgs += " -x86"
+}
+
+$testRunnerCmd = "dotnet xunit $xunitArgs"
+
+Write-Host "running:"
+Write-Host $testRunnerCmd
+Write-Host "..."
+
+Invoke-Expression $testRunnerCmd
 
 cd ..
