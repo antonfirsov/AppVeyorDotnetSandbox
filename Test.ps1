@@ -8,19 +8,26 @@ if (!$targetFramework){
     exit 1
 }
 
-cd .\AppVeyorDotnetSandbox
+if ($targetFramework -ne "mono"){
+    cd .\AppVeyorDotnetSandbox
 
-$xunitArgs = "-c Release -framework $targetFramework"
+    $xunitArgs = "-c Release -framework $targetFramework"
 
-if ($targetFramework -eq "netcoreapp2.0") {
-    $xunitArgs += " --fx-version 2.0.0"
+    if ($targetFramework -eq "netcoreapp2.0") {
+        $xunitArgs += " --fx-version 2.0.0"
+    }
+
+    if ($is32Bit -eq "True") {
+        $xunitArgs += " -x86"
+    }
+
+    $testRunnerCmd = "dotnet xunit $xunitArgs"
 }
-
-if ($is32Bit -eq "True") {
-    $xunitArgs += " -x86"
+else {
+    $testDllPath = "$PSScriptRoot\AppVeyorDotnetSandbox\bin\Release\net461\AppVeyorDotnetSandbox.dll"
+    cd "$env:HOMEPATH\.nuget\packages\xunit.runner.console\2.3.1\tools\net452\"
+    $testRunnerCmd = "mono .\xunit.console.exe $testDllPath"
 }
-
-$testRunnerCmd = "dotnet xunit $xunitArgs"
 
 Write-Host "running:"
 Write-Host $testRunnerCmd
@@ -28,4 +35,4 @@ Write-Host "..."
 
 Invoke-Expression $testRunnerCmd
 
-cd ..
+cd $PSScriptRoot

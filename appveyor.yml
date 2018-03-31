@@ -14,9 +14,20 @@ environment:
       is_32bit: False
     - target_framework: net462
       is_32bit: True
+    - target_framework: mono
+      is_32bit: False
+    - target_framework: mono
+      is_32bit: True
 
 install:
-  - ps: if ($env:target_framework -eq "mono") { cinst mono; }
+  - ps: |
+        if ($env:target_framework -eq "mono") { 
+          if ($env:is_32bit -eq "True") { 
+            cinst mono --x86
+          } else { 
+            cinst mono
+          }
+        }
 
 before_build:
   - cmd: dotnet --version
