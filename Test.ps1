@@ -31,7 +31,7 @@ if ($targetFramework -ne "mono"){
     $testRunnerCmd = "dotnet xunit $xunitArgs"
 }
 else {
-    $testDllPath = "${PSScriptRoot}\AppVeyorDotnetSandbox\bin\Release\net461\AppVeyorDotnetSandbox.dll"
+    $testDllPath = "${PSScriptRoot}\AppVeyorDotnetSandbox\bin\Release\net462\AppVeyorDotnetSandbox.dll"
     VerifyPath($testDllPath, "test dll missing:")
 
     $xunitRunnerPath = "${env:HOMEPATH}\.nuget\packages\xunit.runner.console\2.3.1\tools\net452\"
