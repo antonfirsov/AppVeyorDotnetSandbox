@@ -1,12 +1,5 @@
 image: Visual Studio 2017
 
-install:
-  - cinst mono
-
-before_build:
-  - cmd: dotnet --version
-  - cmd: dotnet restore
-
 environment:
   matrix:
     - target_framework: netcoreapp1.1
@@ -22,10 +15,17 @@ environment:
     - target_framework: net462
       is_32bit: True
 
+install:
+  - ps: if ($env:target_framework -eq "mono") { cinst mono; }
+
+before_build:
+  - cmd: dotnet --version
+  - cmd: dotnet restore
+
 build_script:
   - cmd: dotnet build -c Release
 
 test_script:
-  - ps: .\Test.ps1 $(target_framework) $(is_32bit)
+  - ps: .\Test.ps1 $env:target_framework $env:is_32bit
 
 deploy: off
