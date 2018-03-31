@@ -12,6 +12,6 @@ build_script:
   - cmd: dotnet build -c Release
 
 test_script:
-  - cmd: .\Test.cmd
+  - ps: .\Test.ps1
 
 deploy: off
