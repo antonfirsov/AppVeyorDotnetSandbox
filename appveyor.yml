@@ -9,23 +9,23 @@ before_build:
 
 environment:
   matrix:
-    - TARGET_FRAMEWORK: netcoreapp1.1
-      IS_32BIT: False
-    - TARGET_FRAMEWORK: netcoreapp1.1
-      IS_32BIT: True
-    - TARGET_FRAMEWORK: netcoreapp2.0
-      IS_32BIT: False
-    - TARGET_FRAMEWORK: netcoreapp2.0
-      IS_32BIT: True
-    - TARGET_FRAMEWORK: net462
-      IS_32BIT: False
-    - TARGET_FRAMEWORK: net462
-      IS_32BIT: True
+    - target_framework: netcoreapp1.1
+      is_32bit: False
+    - target_framework: netcoreapp1.1
+      is_32bit: True
+    - target_framework: netcoreapp2.0
+      is_32bit: False
+    - target_framework: netcoreapp2.0
+      is_32bit: True
+    - target_framework: net462
+      is_32bit: False
+    - target_framework: net462
+      is_32bit: True
 
 build_script:
   - cmd: dotnet build -c Release
 
 test_script:
-  - ps: .\Test.ps1
+  - ps: .\Test.ps1 $(target_framework) $(is_32bit)
 
 deploy: off

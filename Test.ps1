@@ -1,12 +1,22 @@
+param(
+    [string]$targetFramework,
+    [string]$is32Bit = "False"
+)
+
+if (!$targetFramework){
+    Write-Host "Test1.ps1 ERROR: targetFramework is undefined!"
+    exit 1
+}
+
 cd .\AppVeyorDotnetSandbox
 
-$xunitArgs = "-c Release -framework $TARGET_FRAMEWORK"
+$xunitArgs = "-c Release -framework $targetFramework"
 
-if ($TARGET_FRAMEWORK -eq "netcoreapp2.0") {
+if ($targetFramework -eq "netcoreapp2.0") {
     $xunitArgs += " --fx-version 2.0.0"
 }
 
-if ($IS_32BIT -eq "True") {
+if ($is32Bit -eq "True") {
     $xunitArgs += " -x86"
 }
 
