@@ -17,5 +17,11 @@ namespace AppVeyorDotnetSandbox
         {
             Assert.True(true || foo);
         }
+
+        [Fact]
+        public void FailOn32Bits()
+        {
+            Assert.Equal(8, IntPtr.Size);
+        }
     }
 }
