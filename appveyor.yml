@@ -12,10 +12,13 @@ environment:
     #  is_32bit: True
     - target_framework: netcoreapp2.0
       is_32bit: False
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - target_framework: netcoreapp2.0
       is_32bit: True
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - target_framework: net462
       is_32bit: False
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #- target_framework: net462
     #  is_32bit: True
 
