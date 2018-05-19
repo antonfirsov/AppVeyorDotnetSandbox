@@ -2,22 +2,22 @@ image: Visual Studio 2017
 
 environment:
   matrix:
-    - target_framework: mono
-      is_32bit: False
-    - target_framework: mono
-      is_32bit: True
-    - target_framework: netcoreapp1.1
-      is_32bit: False
-    - target_framework: netcoreapp1.1
-      is_32bit: True
+    #- target_framework: mono
+    #  is_32bit: False
+    #- target_framework: mono
+    #  is_32bit: True
+    #- target_framework: netcoreapp1.1
+    #  is_32bit: False
+    #- target_framework: netcoreapp1.1
+    #  is_32bit: True
     - target_framework: netcoreapp2.0
       is_32bit: False
     - target_framework: netcoreapp2.0
       is_32bit: True
     - target_framework: net462
       is_32bit: False
-    - target_framework: net462
-      is_32bit: True
+    #- target_framework: net462
+    #  is_32bit: True
 
 install:
   - ps: |
