@@ -3,24 +3,29 @@ solution: AppVeyorDotnetSandbox.sln
 
 matrix:
   include:
-    - env: DOTNET_TO_RUN=2.0.3
-      dotnet: 2.0.3
+    - dotnet: 2.1.300-rc1-008673
       os: linux # Ubuntu 14.04
       dist: trusty
       sudo: required
       mono: none
-    - env: DOTNET_TO_RUN=1.1.7 # wtf travis?
-      dotnet: 1.1.8
-      os: linux # Ubuntu 14.04
-      dist: trusty
-      sudo: required
-      mono: none
-    - env: DOTNET_TO_RUN=mono
-      dotnet: 2.0.3
-      os: linux # Ubuntu 14.04
-      dist: trusty
-      sudo: required
-      mono: latest
+    #- env: DOTNET_TO_RUN=2.0.3
+    #  dotnet: 2.0.3
+    #  os: linux # Ubuntu 14.04
+    #  dist: trusty
+    #  sudo: required
+    #  mono: none
+    #- env: DOTNET_TO_RUN=1.1.7 # wtf travis?
+    #  dotnet: 1.1.8
+    #  os: linux # Ubuntu 14.04
+    #  dist: trusty
+    #  sudo: required
+    #  mono: none
+    #- env: DOTNET_TO_RUN=mono
+    #  dotnet: 2.0.3
+    #  os: linux # Ubuntu 14.04
+    #  dist: trusty
+    #  sudo: required
+    #  mono: latest
 
 script:
-  - ./Test.sh
+  - dotnet test -c Release -f "netcoreapp2.1"

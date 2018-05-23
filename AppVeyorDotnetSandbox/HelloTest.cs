@@ -23,5 +23,14 @@ namespace AppVeyorDotnetSandbox
         {
             Assert.Equal(8, IntPtr.Size);
         }
+
+        [Fact]
+        public void UseSpan()
+        {
+            int[] array = { 1, 2, 3 };
+            Span<int> span = new Span<int>(array);
+
+            Assert.Equal(3, span[2]);
+        }
     }
 }
