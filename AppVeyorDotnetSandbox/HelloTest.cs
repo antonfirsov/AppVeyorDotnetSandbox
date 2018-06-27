@@ -1,10 +1,20 @@
 using System;
+using ImageMagick;
 using Xunit;
 
 namespace AppVeyorDotnetSandbox
 {
     public class HelloTest
     {
+        [Fact]
+        public void HelloMagick()
+        {
+            using (MagickImage image = new MagickImage(MagickColors.AliceBlue, 10, 10))
+            {
+                image.Resize(new Percentage(0.8));
+            }
+        }
+
         [Fact]
         public void Test1()
         {
